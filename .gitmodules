@@ -1,6 +1,0 @@
-[submodule "example/extlibs/argparse"]
-	path = example/extlibs/argparse
-	url = https://github.com/p-ranav/argparse.git
-[submodule "example/extlibs/fmt"]
-	path = example/extlibs/fmt
-	url = https://github.com/fmtlib/fmt.git
