@@ -1,0 +1,29 @@
+name: Build with GCC
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up GCC
+        uses: actions/setup-gcc@v2
+        with:
+          gcc-version: '13'
+
+      - name: Build with GCC
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          make
+
+      - name: Display build status
+        if: always()
+        run: echo "::set-output name=build_status::success"

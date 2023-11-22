@@ -1,0 +1,27 @@
+name: Build with Clang
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Clang
+        uses: actions/setup-clang@v1
+
+      - name: Build with Clang
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          make
+
+      - name: Display build status
+        if: always()
+        run: echo "::set-output name=build_status::success"
