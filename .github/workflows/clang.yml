@@ -23,5 +23,8 @@ jobs:
       - name: Build project
         run: |
           mkdir build
-          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+          cmake -S . -B build -G Ninja \
+          -DCMAKE_C_COMPILER=clang-17 \
+          -DCMAKE_CXX_COMPILER=clang++-17 \
+          -DCMAKE_BUILD_TYPE=Release
           ninja -C build
