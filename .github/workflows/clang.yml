@@ -1,4 +1,4 @@
-name: Build with Clang
+name: Build with Clang 17
 
 on:
   push:
@@ -12,8 +12,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Clang
-        uses: egor-tensin/setup-clang@v1
+      - name: Install LLVM and Clang
+        uses: KyleMayes/install-llvm-action@v1
+        with:
+          version: 17
 
       - name: Install CMake and Ninja
         uses: lukka/get-cmake@latest
@@ -23,7 +25,3 @@ jobs:
           mkdir build
           cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
           ninja -C build
-
-      - name: Display build status
-        if: always()
-        run: echo "::set-output name=build_status::success"

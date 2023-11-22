@@ -25,7 +25,3 @@ jobs:
           mkdir build
           cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
           ninja -C build
-
-      - name: Display build status
-        if: always()
-        run: echo "::set-output name=build_status::success"
